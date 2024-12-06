@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import  settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
 ]
+
+urlpatterns += static(settings.MIDIA_URL, document_root=setting.MIDIA_ROOT)
+
 
 admin.site.site_title = "Ifro News"
 admin.site.site_header = "Administração Site Ifro News"
